@@ -17,14 +17,26 @@ html, body {
     padding: 48px;
     background-Color: '#4096ff';
     padding-top: 2px;
+    padding-bottom: 2px;
     font-size: 3.2em;
     text-align: left;
 
   }
-  
-.contentStyle {
+
+  .article_container {
     width: 100%;
     text-align: left;
+  }
+
+  .contentStyle {
+    width: 100%;
+    text-align: left;
+  }
+
+  .contentStyle:hover {
+    background-color: black;
+    color: white;
+    font-size: large;
   }
   
 .siderStyle {
