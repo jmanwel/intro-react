@@ -15,9 +15,9 @@ function App(props) {
       <div>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Posts/>}/>
-            <Route path="new_post/:id" element={<New_Post/>}/>
-            <Route path="*" element={<ErrorPage/>} />
+            <Route path="/" element={< Posts />} />
+            <Route path="new_post/:id" element={< New_Post />}/>
+            <Route path="*" element={< ErrorPage />} />
           </Routes>          
         </BrowserRouter>
       </div>

@@ -1,18 +1,18 @@
-import { useRouteError } from "react-router-dom";
+import { Button } from 'antd';
 
 function ErrorPage() {
-  const error = useRouteError();
-  console.error(error);
-
   return (
-    <div id="error-page">
-      <h1>Oops!</h1>
-      <p>Sorry, an unexpected error has occurred.</p>
-      <p>
-        <i>{error.statusText || error.message}</i>
-      </p>
-    </div>
+      <div className="error-page">
+        <h1>404!</h1>
+        <img className="vibrate-1" alt="404" src="../404.png"/>
+        <br />
+        <Button type="primary" href="/">
+          Back to Home
+        </Button>
+        <br />
+        <br />
+      </div>          
   );
 }
 
-export default ErrorPage
+export default ErrorPage;
