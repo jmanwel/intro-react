@@ -36,7 +36,7 @@ function Posts(props) {
                                     key={idx}
                                     id={article.id}
                                     title={article.doc_title} 
-                                    content={article.doc_content.substring(1,100)}
+                                    content={article.doc_content.substring(0,100)}
                                     />
                                 )
                             })
