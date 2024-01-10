@@ -1,5 +1,6 @@
 import { React, useState } from "react";
-import { Layout, Input, Button } from 'antd';
+import { Layout, Input, Button } from "antd";
+import { doc, setDoc } from "firebase/firestore"; 
 
 
 const { TextArea } = Input;
@@ -11,11 +12,16 @@ const CreatePost = (props)=>{
     const [content, setContent] = useState("")
 
     const onTitleChange = (event)=> setTitle(event.target.value)
-    const onContentChange = (event)=> {console.log(event.target.value); setContent(event.target.value)}
-    const onCreatePost = () => {
-        console.log("CREATE!")
-        console.log(title)
-        console.log(content)
+    
+    const onContentChange = (event)=> setContent(event.target.value)
+    
+    async const onCreatePost = () => {
+        await setDoc(doc(db, "posts", "LA"), 
+            { 
+                doc_title: title, 
+                doc_content: content 
+            }
+        );
     } 
 
     return(
