@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Layout, Flex, Card, Space } from 'antd';
+import { Layout, Flex } from 'antd';
 import Post from './post';
-import api from '../mock_api';
-import { collection, doc, getDoc, getDocs } from "firebase/firestore"; 
+import { collection, getDocs } from "firebase/firestore"; 
 const { Header, Footer, Sider, Content } = Layout;
 import _ from 'lodash';
 import db from '../firebase';
@@ -37,7 +36,7 @@ function Posts(props) {
                                     key={idx}
                                     id={article.id}
                                     title={article.doc_title} 
-                                    content={article.doc_content}
+                                    content={article.doc_content.substring(1,100)}
                                     />
                                 )
                             })

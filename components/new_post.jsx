@@ -1,17 +1,28 @@
 import { React, useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { Layout, Card } from 'antd';
-import api from '../mock_api';
+import db from '../firebase';
+import { collection, query, where, getDoc, doc } from "firebase/firestore"; 
+
 
 const { Header } = Layout;
 
 const New_Post =()=>{
     let params = useParams()
-
-    let post = api[params.id]
-    let title = post.title
-    let content = post.content
-
+    
+    let [title, setTitle] = useState("")
+    let [content, setContent] = useState("")
+    
+    useEffect(() => {
+        const q = query(collection(db, "posts"), where("id", "==", params.id));
+        (async () => {
+            const docRef = doc(db, "posts", params.id);
+            const docSnap = await getDoc(docRef);
+            setTitle = docSnap.data().doc_title
+            setContent = docSnap.data().doc_content        
+            }
+        )()},[])
+       
     return(
         <div className="app_container">
             <Header className="headerStyle">{title}</Header>
