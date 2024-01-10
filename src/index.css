@@ -45,3 +45,19 @@ html, body {
     overflow: 'hidden';
     width: 'calc(50% - 8px)';
   }
+
+
+  .post_inputs_container {
+    margin-top:20px;
+  }
+
+  .post_input_container {
+    margin-bottom:20px;
+  }
+
+
+  .post_input_button {
+    margin-top:20px;
+    float: right;
+  }
+  
