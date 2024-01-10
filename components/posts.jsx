@@ -1,12 +1,29 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import { Layout, Flex, Card, Space } from 'antd';
 import Post from './post';
 import api from '../mock_api';
+import { collection, doc, getDoc, getDocs } from "firebase/firestore"; 
 const { Header, Footer, Sider, Content } = Layout;
 import _ from 'lodash';
+import db from '../firebase';
 
 
 function Posts(props) {
+
+    const [posts, setPosts] = useState([])
+    
+    useEffect(() => {
+    const postRef = collection(db, "posts");
+    (async () => {
+        const snapPosts = await getDocs(postRef);
+        snapPosts.forEach((doc) => {
+            let {id, } = doc
+            let payload = {id, ...doc.data()}
+            setPosts((posts)=>[...posts, payload])
+        });
+     })()
+    },[])
+    
     return(
         <div className="post_container">
             <Flex gap="middle" wrap="wrap">
@@ -14,13 +31,13 @@ function Posts(props) {
                     <Header className="headerStyle">Posts</Header>
                     <Content className="article_container">
                         {
-                            _.map(api, (article, idx)=>{
+                            _.map(posts, (article, idx)=>{
                                 return (
                                     <Post 
                                     key={idx}
-                                    id={idx}
-                                    title={article.title} 
-                                    content={article.content}
+                                    id={article.id}
+                                    title={article.doc_title} 
+                                    content={article.doc_content}
                                     />
                                 )
                             })

@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 import { Layout, Input, Button } from "antd";
-import { doc, setDoc } from "firebase/firestore"; 
-
+import db from "../firebase.js"; 
+import { collection, addDoc } from "firebase/firestore"; 
 
 const { TextArea } = Input;
 const { Header } = Layout;
@@ -15,13 +15,10 @@ const CreatePost = (props)=>{
     
     const onContentChange = (event)=> setContent(event.target.value)
     
-    async const onCreatePost = () => {
-        await setDoc(doc(db, "posts", "LA"), 
-            { 
-                doc_title: title, 
-                doc_content: content 
-            }
-        );
+    const onCreatePost = async() => {
+        let payload = { doc_title: title, doc_content: content }
+        const docRef = await addDoc(collection(db, "posts"), payload);
+        console.log("Document written with ID: ", docRef.id);  
     } 
 
     return(
