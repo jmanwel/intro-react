@@ -12,7 +12,7 @@ function Posts(props) {
             <Flex gap="middle" wrap="wrap">
                 <Layout className="layoutStyle">
                     <Header className="headerStyle">Posts</Header>
-                    <Content className="contentStyle">
+                    <Content className="article_container">
                         {
                             _.map(api, (article, idx)=>{
                                 return (

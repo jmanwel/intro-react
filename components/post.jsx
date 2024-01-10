@@ -1,7 +1,6 @@
 import React from 'react'
 import { Card } from 'antd';
 import { Link } from "react-router-dom";
-import New_Post from "./new_post.jsx";
 
 const Post = (props)=>{
     return(

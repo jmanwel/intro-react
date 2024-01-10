@@ -8,9 +8,7 @@ import New_Post from "/components/new_post.jsx"
 import ErrorPage from "./error_page.jsx"
 import CreatePost from "/components/CreatePost.jsx"
 
-
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
 
 function App(props) {
   return (
