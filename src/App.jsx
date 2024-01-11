@@ -7,6 +7,7 @@ import ErrorPage from "./error_page.jsx"
 import CreatePost from "/components/CreatePost.jsx"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "/components/navbar.jsx"
+import UpdatePost from '../components/update_post.jsx';
 
 
 function App(props) {
@@ -17,9 +18,10 @@ function App(props) {
           <Navbar/>
           <Routes>
             <Route path="/" element={<Posts/>}/>
-            <Route path="new_post/:id" element={<New_Post/>}/>
-            <Route path="create_post" element={<CreatePost/>}/>
-            <Route path="*" element={<ErrorPage/>} />
+            <Route path="new_post/:id" element={ <New_Post/> }/>
+            <Route path="create_post" element={ <CreatePost/> }/>
+            <Route path="update_post/:id" element={ <UpdatePost/> }/>
+            <Route path="*" element={ <ErrorPage/> } />
           </Routes>          
         </BrowserRouter>
       </div>
