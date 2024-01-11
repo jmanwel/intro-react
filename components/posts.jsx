@@ -35,7 +35,7 @@ function Posts(props) {
                                     <Post 
                                     key={idx}
                                     id={article.id}
-                                    title={article.doc_title} 
+                                    title={_.capitalize(article.doc_title)} 
                                     content={article.doc_content.substring(0,100)}
                                     />
                                 )
