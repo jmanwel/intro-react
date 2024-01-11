@@ -20,8 +20,6 @@ const New_Post =()=>{
             const docRef = doc(db, "posts", params.id);
             const docSnap = await getDoc(docRef)
             setData(docSnap.data())
-            // setTitle = docSnap.data().doc_title
-            // setContent = docSnap.data().doc_content                    
             }
         )()},[])
        
