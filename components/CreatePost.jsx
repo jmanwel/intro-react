@@ -1,25 +1,29 @@
 import { React, useState } from "react";
 import { Layout, Input, Button } from "antd";
 import db from "../firebase.js"; 
-import { collection, addDoc } from "firebase/firestore"; 
+import { collection, addDoc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
 const { TextArea } = Input;
 const { Header } = Layout;
 
 const CreatePost = (props)=>{
 
-    const [title, setTitle] = useState("")
-    const [content, setContent] = useState("")
+    let [title, setTitle] = useState("")
+    let [content, setContent] = useState("")
 
     const onTitleChange = (event)=> setTitle(event.target.value)
     
     const onContentChange = (event)=> setContent(event.target.value)
-    
+
+    const navigate = useNavigate();
+
     const onCreatePost = async() => {
         let payload = { doc_title: title, doc_content: content }
         const docRef = await addDoc(collection(db, "posts"), payload);
-        console.log("Document written with ID: ", docRef.id);  
-    } 
+        console.log("Document written with ID: ", docRef.id);
+        navigate('/', { replace: true });
+    }
 
     return(
         <div className="create_post_container">
