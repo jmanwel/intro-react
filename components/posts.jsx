@@ -8,6 +8,7 @@ import db from '../firebase';
 
 
 function Posts(props) {
+    console.log(props.user)
 
     const [posts, setPosts] = useState([])
     
@@ -22,21 +23,23 @@ function Posts(props) {
         });
      })()
     },[])
-    
+
     return(
         <div className="post_container">
             <Flex gap="middle" wrap="wrap">
                 <Layout className="layoutStyle">
                     <Header className="headerStyle">Posts</Header>
                     <Content className="article_container">
+                        { console.log(props.user) }                        
                         {
                             _.map(posts, (article, idx)=>{
                                 return (
                                     <Post 
-                                    key={idx}
-                                    id={article.id}
-                                    title={_.capitalize(article.doc_title)} 
-                                    content={article.doc_content.substring(0,100)}
+                                        key = { idx }
+                                        id = { article.id }
+                                        title = { _.capitalize(article.doc_title) } 
+                                        content = { article.doc_content.substring(0,100) }
+                                        user = { props.user }
                                     />
                                 )
                             })

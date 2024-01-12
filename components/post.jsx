@@ -15,11 +15,13 @@ const Post = (props)=>{
                         >
                             Read full article
                         </Link>
-                        <Link 
+                        {props.user &&
+                            <Link 
                             to={`/update_post/${props.id}`}
-                        >
-                            Update article
-                        </Link>
+                            >
+                                Update article
+                            </Link>
+                        }                        
                     </div>
                     } 
                   style={{ marginTop: 16 }}>

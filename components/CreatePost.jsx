@@ -22,7 +22,7 @@ const CreatePost = (props)=>{
         let payload = { doc_title: title, doc_content: content }
         const docRef = await addDoc(collection(db, "posts"), payload);
         console.log("Document written with ID: ", docRef.id);
-        navigate('/', { replace: true });
+        navigate('/posts', { replace: true });
     }
 
     return(

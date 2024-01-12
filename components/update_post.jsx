@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 import { useNavigate } from "react-router-dom";
 import { Layout, Input, Button } from "antd";
 import db from "../firebase.js"; 
-import { collection, query, where, getDoc, doc, updateDoc } from "firebase/firestore"; 
+import { getDoc, doc, updateDoc } from "firebase/firestore"; 
 
 const { TextArea } = Input;
 const { Header } = Layout;
@@ -14,21 +14,15 @@ const UpdatePost = (props)=>{
 
     let [title, setTitle] = useState("")
     let [content, setContent] = useState("")
-    let [data, setData] = useState("")
     
     useEffect(() => {
-        const q = query(collection(db, "posts"), where("id", "==", params.id));
         (async () => {
             const docRef = doc(db, "posts", params.id);
             const docSnap = await getDoc(docRef)
-            setData(docSnap.data())
+            setTitle(docSnap.data().doc_title)
+            setContent(docSnap.data().doc_content)
             }
         )()},[])
-
-    if(data !== ""){
-        title = data.doc_title;
-        content = data.doc_content;    
-    }
 
     const onTitleChange = (event)=> setTitle(event.target.value)
     const onContentChange = (event)=> setContent(event.target.value)
@@ -36,11 +30,11 @@ const UpdatePost = (props)=>{
     const navigate = useNavigate();
 
     const onUpdatePost = async() => {
-        console.log(title, content)
         let payload = { doc_title: title, doc_content: content }
-        const docRef = await updateDoc(collection(db, "posts"), payload);
+        const docRef = doc(db, "posts", params.id)
+        await updateDoc(docRef, payload);
         console.log("Document updated!");
-        navigate('/', { replace: true });
+        navigate('/posts', { replace: true });
     }
 
     return(
