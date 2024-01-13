@@ -3,23 +3,26 @@ html, body {
     height: 100%;
 }
 
-
 .app_container {
     margin-top: 20px;
     width: 1200px;
     margin: 0px auto;
 }
 
+.article_container {
+  text-align: left;
+}
 
 .headerStyle {
     color: rgba(255, 255, 255, 0.87);
     height: 64px;
-    padding: 48px;
-    background-Color: '#4096ff';
+    padding: 50px;
+    background-Color: #212120;
     padding-top: 2px;
     font-size: 3.2em;
-    text-align: left;
-
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
   
 .contentStyle {
@@ -68,13 +71,11 @@ html, body {
     margin-bottom:20px;
   }
 
-
   .post_input_button {
     margin-top:20px;
     float: right;
   }
   
-
   .vibrate-1 {
     max-height: 500px;
     -webkit-animation: vibrate-1 0.3s linear infinite both;

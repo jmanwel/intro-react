@@ -16,7 +16,6 @@ const Signin = (props)=>{
     const navigate = useNavigate();
 
     const onSignIn = ()=>{
-        console.log(email, password)
         const auth = getAuth();
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
@@ -33,32 +32,32 @@ const Signin = (props)=>{
 
     return (
         <div className="sign_up_container">
-            <Header className="headerStyle">Sign In</Header>
-            <div className="sign_up_container_inputs" style={{marginTop: "20px"}}>
-                <div className="post_inputs_container">
-                    <div className="post_input_title">
-                        <h2>Email</h2>
-                    </div>
-                    <div className="post_input">
-                        <Input 
-                            placeholder="Email"
-                            onChange={ onEmailChange }
-                        />
-                    </div>
-                    <div className="post_input_title">
-                        <h2>Password</h2>
-                    </div>
-                    <div className="post_input">
-                    <Input.Password
-                        placeholder="input password"
-                        onChange={ onPasswordChange }
-                        iconRender={(visible) => (
-                            visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
-                            )}
-                    />
-                    </div>
-                </div>
+            <Header className="headerStyle" >Welcome!, please login</Header>
+            <div className="mb-3">
+                <label for="exampleFormControlInput1" className="form-label">
+                    Email address
+                </label>
+                <input 
+                    type="email" 
+                    onChange={ onEmailChange } 
+                    className="form-control" 
+                    placeholder="name@example.com"
+                />
             </div>
+            <div className="mb-3">
+                <label for="exampleFormControlInput1" className="form-label">
+                    Password
+                </label>
+                <Input.Password
+                    placeholder="input password"
+                    onChange={ onPasswordChange }
+                    iconRender={(visible) => (
+                        visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+                        )}
+                />
+            </div>
+
+            
             <div style={{ width: '100%'}}>
                 <div style={{ float: 'left'}}>
                     <a href="/">Don't have an account?, sign up</a>
