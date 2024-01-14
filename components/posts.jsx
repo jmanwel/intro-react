@@ -20,8 +20,8 @@ function Posts(props) {
             let {id, } = doc
             let payload = {id, ...doc.data()}
             setPosts((posts)=>[...posts, payload])
-        });
-     })()
+            });
+        })()
     },[])
 
     return(
@@ -30,8 +30,8 @@ function Posts(props) {
                 <Layout className="layoutStyle">
                     <Header className="headerStyle">Posts</Header>
                     <Content className="article_container">
-                        { console.log(props.user) }                        
-                        {
+                        {posts.length > 0
+                            ?
                             _.map(posts, (article, idx)=>{
                                 return (
                                     <Post 
@@ -43,6 +43,8 @@ function Posts(props) {
                                     />
                                 )
                             })
+                            :
+                            <h2>No post yet</h2>
                         }
                     </Content>
                     <Footer className="footerStyle">Footer</Footer>

@@ -18,6 +18,7 @@ const Signout = (props)=>{
             console.log("Signed out!");
             setUser(false);
             navigate('/', { replace: true });
+            window.location.reload()
         }).catch((error) => {
             console.log("Ooops!", error);
         });

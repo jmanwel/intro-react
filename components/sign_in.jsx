@@ -34,7 +34,7 @@ const Signin = (props)=>{
         <div className="sign_up_container">
             <Header className="headerStyle" >Welcome!, please login</Header>
             <div className="mb-3">
-                <label for="exampleFormControlInput1" className="form-label">
+                <label htmlFor="email" className="form-label">
                     Email address
                 </label>
                 <input 
@@ -45,7 +45,7 @@ const Signin = (props)=>{
                 />
             </div>
             <div className="mb-3">
-                <label for="exampleFormControlInput1" className="form-label">
+                <label htmlFor="password" className="form-label">
                     Password
                 </label>
                 <Input.Password
@@ -57,17 +57,19 @@ const Signin = (props)=>{
                 />
             </div>
 
-            
-            <div style={{ width: '100%'}}>
-                <div style={{ float: 'left'}}>
-                    <a href="/">Don't have an account?, sign up</a>
-                </div>
-                <div className="post_input_button">
-                    <Button type="primary" size="large"
-                        onClick = { onSignIn }
-                        >
-                        Sign In
-                    </Button>
+            <div className="container">
+                <div className="row">
+                    <div className="col">
+                        <a style={{ float: 'left'}} href="/signup">Don't have an account?, sign up</a>
+                    </div>
+                    <div className="col">
+                        <Button type="primary" size="large"
+                            onClick = { onSignIn }
+                            style={{ float: 'right'}}
+                            >
+                            Sign In
+                        </Button>
+                    </div>                    
                 </div>
             </div>
         </div>
