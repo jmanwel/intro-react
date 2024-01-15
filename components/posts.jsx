@@ -6,12 +6,10 @@ const { Header, Footer, Sider, Content } = Layout;
 import _ from 'lodash';
 import db from '../firebase';
 
-
 function Posts(props) {
-    console.log(props.user)
 
     const [posts, setPosts] = useState([])
-    
+
     useEffect(() => {
     const postRef = collection(db, "posts");
     (async () => {

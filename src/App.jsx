@@ -20,7 +20,8 @@ function App(props) {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       console.log("User signed in: ", user.uid);
-      setUser(true)
+      // setUser(true)
+      setUser(user.uid)
     } else {
         console.log("No users signed in")
     }
@@ -35,9 +36,9 @@ function App(props) {
             <Route path ="/signup" element={< Signup />} />
             <Route path ="/signout" element={< Signout user={{ user }} />} />
             <Route path ="/posts" element={< Posts user={{ user }} />} />
-            <Route path ="new_post/:id" element={ <New_Post/> } />
-            <Route path ="create_post" element={ <CreatePost/> } />
-            <Route path ="update_post/:id" element={ <UpdatePost/> } />
+            <Route path ="new_post/:id" element={ < New_Post /> } />
+            <Route path ="create_post" element={ < CreatePost user={{ user }} /> } />
+            <Route path ="update_post/:id" element={ < UpdatePost user={{ user }} /> } />
             <Route path ="*" element={ <ErrorPage/> } />
           </Routes>          
         </BrowserRouter>

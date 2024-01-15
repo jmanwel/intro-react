@@ -8,7 +8,6 @@ const { TextArea } = Input;
 const { Header } = Layout;
 
 const CreatePost = (props)=>{
-
     let [title, setTitle] = useState("")
     let [content, setContent] = useState("")
 
@@ -19,7 +18,7 @@ const CreatePost = (props)=>{
     const navigate = useNavigate();
 
     const onCreatePost = async() => {
-        let payload = { doc_title: title, doc_content: content }
+        let payload = { doc_title: title, doc_content: content, doc_uid: props.user.user }
         const docRef = await addDoc(collection(db, "posts"), payload);
         console.log("Document written with ID: ", docRef.id);
         navigate('/posts', { replace: true });

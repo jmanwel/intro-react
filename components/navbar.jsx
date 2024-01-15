@@ -7,7 +7,7 @@ const Navbar = (props)=> {
         let path = "/";
         let content = "Sign In";
 
-        if (props.user.user === true){
+        if (props.user.user !== false){
             path = "/signout";
             content = "Sign Out";
         }
