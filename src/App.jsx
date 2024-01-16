@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import './App.css';
@@ -20,13 +20,13 @@ function App(props) {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       console.log("User signed in: ", user.uid);
-      // setUser(true)
       setUser(user.uid)
     } else {
         console.log("No users signed in")
     }
   });
 
+  
   return (
       <div className='app_container'>
         <BrowserRouter>

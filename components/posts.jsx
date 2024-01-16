@@ -1,26 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import { Layout, Flex } from 'antd';
 import Post from './post';
-import { collection, getDocs } from "firebase/firestore"; 
+import { collection, getDocs,  onSnapshot, query, where } from "firebase/firestore"; 
 const { Header, Footer, Sider, Content } = Layout;
 import _ from 'lodash';
 import db from '../firebase';
 
 function Posts(props) {
+        
+    const [posts, setPosts] = useState([]);
+    const [uid, setUid] = useState("")
 
-    const [posts, setPosts] = useState([])
+    useEffect(()=>{
+        setUid(props.user.user)
+    })
 
-    useEffect(() => {
-    const postRef = collection(db, "posts");
-    (async () => {
-        const snapPosts = await getDocs(postRef);
-        snapPosts.forEach((doc) => {
-            let {id, } = doc
-            let payload = {id, ...doc.data()}
-            setPosts((posts)=>[...posts, payload])
+    //const q = query(collection(db, "posts"), where("doc_uid", "==", uid));
+    // const q = query(collection(db, "posts"));
+    const q = query(collection(db, "posts"), where("doc_uid", "==", "rLascQXcIEg0W5bZZLgVxaV5Its1"));
+    
+    useEffect(() => {        
+        const unsubscribe = onSnapshot(q, (querySnapshot) => {
+            console.log("hola", uid)
+            const posts1 = [];
+            querySnapshot.forEach((doc) => {
+                let {id, } = doc
+                let payload = {id, ...doc.data()}
+                setPosts((posts)=>[...posts, payload])
             });
-        })()
-    },[])
+            });
+    }, []);
 
     return(
         <div className="post_container">

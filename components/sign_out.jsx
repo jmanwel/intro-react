@@ -2,9 +2,6 @@ import React, { useState } from "react";
 import { getAuth, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 
-
-
-
 const Signout = (props)=>{
     const [user, setUser] = useState(props.user);
 
