@@ -18,7 +18,7 @@ function Posts(props) {
     //const q = query(collection(db, "posts"), where("doc_uid", "==", uid));
     // const q = query(collection(db, "posts"));
     const q = query(collection(db, "posts"), where("doc_uid", "==", "rLascQXcIEg0W5bZZLgVxaV5Its1"));
-    
+
     useEffect(() => {        
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
             console.log("hola", uid)
@@ -51,7 +51,7 @@ function Posts(props) {
                                 )
                             })
                             :
-                            <h2>No post yet</h2>
+                            <h2 className="headerStyle">No post yet</h2>
                         }
                     </Content>
                     <Footer className="footerStyle">Footer</Footer>
