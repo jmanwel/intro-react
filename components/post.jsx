@@ -9,7 +9,6 @@ const Post = (props)=>{
     const onDeletePost = async() => {
         console.log("delete post:", props.id)
         await deleteDoc(doc(db, "posts", props.id));
-        window.location.reload()
     }
 
     return(
