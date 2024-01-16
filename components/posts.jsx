@@ -9,19 +9,14 @@ import db from '../firebase';
 function Posts(props) {
         
     const [posts, setPosts] = useState([]);
-    const [uid, setUid] = useState("")
 
-    useEffect(()=>{
-        setUid(props.user.user)
-    })
-
-    //const q = query(collection(db, "posts"), where("doc_uid", "==", uid));
-    // const q = query(collection(db, "posts"));
-    const q = query(collection(db, "posts"), where("doc_uid", "==", "rLascQXcIEg0W5bZZLgVxaV5Its1"));
+    console.log(props.user.user)
+    
+    let q = query(collection(db, "posts"), where("doc_uid", "==", props.user.user));
+    
 
     useEffect(() => {        
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
-            console.log("hola", uid)
             const posts1 = [];
             querySnapshot.forEach((doc) => {
                 let {id, } = doc
