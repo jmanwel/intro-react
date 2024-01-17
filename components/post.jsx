@@ -21,6 +21,7 @@ const Post = (props)=>{
                             to={`/new_post/${props.id}`} 
                             style={{ marginRight:'15px' }}
                         >
+                            <i className="fa-solid fa-book"></i>
                             Read full article
                         </Link>
                         {props.user.user &&
@@ -28,6 +29,7 @@ const Post = (props)=>{
                             to={`/update_post/${props.id}`}
                             style={{ marginRight:'15px' }}
                             >
+                                <i className="fa-solid fa-pencil"></i>
                                 Update article
                             </Link>
                         }
@@ -36,6 +38,7 @@ const Post = (props)=>{
                             to="#"
                             onClick = { onDeletePost}
                             >
+                                <i className="fa-solid fa-trash"></i>
                                 Delete article
                             </Link>
                         }                        

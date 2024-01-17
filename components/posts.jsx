@@ -12,10 +12,8 @@ function Posts(props) {
 
     console.log(props.user.user)
     
-    let q = query(collection(db, "posts"), where("doc_uid", "==", props.user.user));
-    
-
     useEffect(() => {        
+        let q = query(collection(db, "posts"), where("doc_uid", "==", props.user.user));
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
             const posts1 = [];
             querySnapshot.forEach((doc) => {
