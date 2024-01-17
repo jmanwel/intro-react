@@ -9,7 +9,7 @@ import db from '../firebase';
 function Posts(props) {
         
     const [posts, setPosts] = useState([]);
-
+    const [uid, setUid] = useState(props.user.user);
     console.log(props.user.user)
     
     useEffect(() => {        
