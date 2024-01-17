@@ -16,15 +16,18 @@ function App(props) {
 
   const [user, setUser] = useState(false);
 
-  const auth = getAuth();
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      console.log("User signed in: ", user.uid);
-      setUser(user.uid)
-    } else {
-        console.log("No users signed in")
-    }
-  });
+  useEffect(()=>{
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        console.log("User signed in: ", user.uid);
+        setUser(user.uid)
+      } else {
+          console.log("No users signed in")
+      }
+    });
+  },[]);
+  
 
   
   return (
