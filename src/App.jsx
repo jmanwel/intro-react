@@ -14,21 +14,47 @@ import Signout from '../components/sign_out.jsx';
 
 function App(props) {
 
-  const [user, setUser] = useState(false);
+  const [initializing, setInitializing] = useState(true);
+  const [user, setUser] = useState();
 
-  useEffect(()=>{
+  function onAuthStateChanged(user) {
+    setUser(user);
+    // console.log("User signed in: ", user.uid);
+    if (initializing) setInitializing(false);
+  }
+
+  useEffect(() => {
     const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        console.log("User signed in: ", user.uid);
-        setUser(user.uid)
-      } else {
-          console.log("No users signed in")
-      }
-    });
-  },[]);
-  
+    const subscriber = auth.onAuthStateChanged(onAuthStateChanged);
+    return subscriber; // unsubscribe on unmount
+  }, []);
 
+  // useEffect(()=>{
+  //   const auth = getAuth();
+  //   onAuthStateChanged(auth, (user) => {
+  //     if (user) {
+  //       console.log("User signed in: ", user.uid);
+  //       setUser(user.uid)
+  //     } else {
+  //         console.log("No users signed in")
+  //     }
+  //   });
+  // },[]);
+  
+  if (initializing) return null;
+
+  if (!user) {
+    return (
+      <div className='app_container'>
+        <BrowserRouter>
+          <Routes>
+            <Route path ="/" element={< Signin />} />
+            <Route path ="*" element={ <ErrorPage/> } />
+          </Routes>          
+        </BrowserRouter>
+      </div>
+    );
+  }
   
   return (
       <div className='app_container'>

@@ -3,7 +3,8 @@ import { getAuth, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 
 const Signout = (props)=>{
-    const [user, setUser] = useState(props.user);
+    console.log(props)
+    const [user, setUser] = useState(props.user.user.uid);
 
     const navigate = useNavigate();
   

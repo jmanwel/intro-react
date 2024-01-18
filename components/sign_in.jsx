@@ -32,7 +32,7 @@ const Signin = (props)=>{
 
     return (
         <div className="sign_up_container">
-            <Header className="headerStyle" >Welcome!, please login</Header>
+            <Header className="headerStyle" >Login</Header>
             <div className="mb-3">
                 <label htmlFor="email" className="form-label">
                     Email address
