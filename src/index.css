@@ -13,16 +13,20 @@ html, body {
   text-align: left;
 }
 
+.error_container {
+  color: red;
+}
+
 .headerStyle {
     color: rgba(255, 255, 255, 0.87);
-    height: 64px;
+    height: 80px;
     padding: 50px;
     background-Color: #212120;
-    padding-top: 2px;
+    padding-top: 1px;
     font-size: 3.2em;
     text-align: center;
     margin-top: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 10px;  
   }
   
 .contentStyle {

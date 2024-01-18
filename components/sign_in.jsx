@@ -9,6 +9,7 @@ const Signin = (props)=>{
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [error, setError] = useState("")
 
     const onEmailChange = (event)=> setEmail(event.target.value)
     const onPasswordChange = (event)=> setPassword(event.target.value)
@@ -24,9 +25,8 @@ const Signin = (props)=>{
                 navigate('/posts', { replace: true });
             })
             .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log("Error!", errorCode, errorMessage)
+                setError({code: error.code, msg: error.message})
+                console.log("Error!", error.code, error.message)
             });
     }
 
@@ -56,7 +56,11 @@ const Signin = (props)=>{
                         )}
                 />
             </div>
-
+            {error &&
+                <p className="error_container">
+                    <i class="fa-solid fa-triangle-exclamation"></i> | {error.code} | {error.msg} |
+                </p>
+            }
             <div className="container">
                 <div className="row">
                     <div className="col">

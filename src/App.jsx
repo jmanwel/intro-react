@@ -19,7 +19,6 @@ function App(props) {
 
   function onAuthStateChanged(user) {
     setUser(user);
-    // console.log("User signed in: ", user.uid);
     if (initializing) setInitializing(false);
   }
 
@@ -29,17 +28,6 @@ function App(props) {
     return subscriber; // unsubscribe on unmount
   }, []);
 
-  // useEffect(()=>{
-  //   const auth = getAuth();
-  //   onAuthStateChanged(auth, (user) => {
-  //     if (user) {
-  //       console.log("User signed in: ", user.uid);
-  //       setUser(user.uid)
-  //     } else {
-  //         console.log("No users signed in")
-  //     }
-  //   });
-  // },[]);
   
   if (initializing) return null;
 
