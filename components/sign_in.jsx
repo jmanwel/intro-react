@@ -10,11 +10,37 @@ const Signin = (props)=>{
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [error, setError] = useState("")
+    const [validate, setValidate] = useState("")
 
     const onEmailChange = (event)=> setEmail(event.target.value)
     const onPasswordChange = (event)=> setPassword(event.target.value)
     
     const navigate = useNavigate();
+
+    // function validateFields() {
+    //     if (email === '' || password === '') {
+    //       // fields are empty, show error message or do something else
+    //       console.log('Fields cannot be empty');
+    //       setValidate({mail_error:"Mail empty" , pass_error: Password empty})
+    //       return false;
+    //     }
+    //     if (field1 === field2) {
+    //       // fields are equal, show error message or do something else
+    //       console.log('Fields cannot be equal');
+    //       return false;
+    //     }
+    //     // fields are valid, continue with form submission or do something else
+    //     console.log('Fields are valid');
+    //     return true;
+    // }
+
+    // function handleSubmit(e) {
+    //     e.preventDefault();
+    //     if (validateFields()) {
+    //       // do something with form data
+    //       console.log('Form submitted successfully');
+    //     }
+    //   }
 
     const onSignIn = ()=>{
         const auth = getAuth();
